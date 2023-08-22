@@ -1,0 +1,60 @@
+{% extends "AppEntrega/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %} <h1 class="fw-bolder"> PAGINA PARA SUCURSALES </h1> {% endblock %}
+{% block segundo_titulo %} <h2 class="fw-bolder"> AQUI RECIBES LA INFORMACION DE LA SUCURSAL </h2> {% endblock %}
+{% block boton_su %}   <a class="btn btn-primary" href="{% url 'busquedaSucursal' %}">Buscar Sucursal</a> {% endblock %}
+
+
+{% block contenido %}
+
+
+{% if sucursales %}
+<h1> FORMULARIO </h1>
+{% for sucursal in sucursales %}
+
+<h2> {{ sucursal.nombre }} - {{ sucursal.numero }} </h2>
+{% endfor %}
+
+{% else %}
+<h1> No se Encotraron Resultados </h1>
+{% endif %}
+
+
+<h3> {{ mensaje }}</h3>
+
+<table>
+    <thead>
+        <tr>
+            
+            <th>Nombre</th>
+            <th>Numero</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+        {% for sucursal in sucursales_ %}
+        <tr>
+            
+            <td>
+                {{ sucursal.nombre}}
+            
+            </td>
+            
+            <td>
+                {{ sucursal.numero}}
+            </td>
+            
+             <td>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

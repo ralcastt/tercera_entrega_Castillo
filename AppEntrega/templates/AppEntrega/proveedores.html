@@ -1,0 +1,67 @@
+{% extends "AppEntrega/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %} <h1 class="fw-bolder"> PAGINA PARA LOS PROVEEDORES </h1> {% endblock %}
+{% block segundo_titulo %} <h2 class="fw-bolder"> Informacion de los Proveedores </h2> {% endblock %}
+
+
+
+{% block contenido %}
+<h1> Proveedores </h1>
+<form action="{% url 'proveedores' %}" method="POST"> {% csrf_token %}
+    <table>
+     {{ formulario.as_table }}
+    </table>
+
+    <input type="submit" value="Agregar">
+</form>
+
+
+<h2> {{ mensaje }}</h2>
+
+
+<table>
+    <thead>
+        <tr>
+            
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Producto</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+        {% for proveedor in proveedores %}
+        <tr>
+            
+            <td>
+                {{ proveedor.nombre}}
+            
+            </td>
+            
+            <td>
+                {{ proveedor.apellido}}
+            </td>
+           
+            <td>
+                {{ proveedor.email}}
+            </td>
+            
+            <td>
+                {{ proveedor.producto}}
+            </td>
+            
+            <td>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ {% endblock %}

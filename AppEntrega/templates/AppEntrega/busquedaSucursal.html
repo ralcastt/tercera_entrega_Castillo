@@ -1,0 +1,26 @@
+{% extends "AppEntrega/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %} <h1 class="fw-bolder"> PAGINA PARA SUCURSALES </h1> {% endblock %}
+{% block segundo_titulo %} <h2 class="fw-bolder"> AQUI BUSCARAS LAS SUCURSALES </h2> {% endblock %}
+{% block boton_su %}   <a class="btn btn-primary" href="{% url 'busquedaSucursal' %}">Buscar Sucursal</a> {% endblock %}
+
+
+{% block contenido %}
+
+<h1> FORMULARIO </h1>
+<form action="{% url 'buscar' %}" method="GET"> {% csrf_token %}
+
+    <input type="number" name="numero" id="numero" placeholder="NUMERO DE SUCURSAL">
+    
+    <input type="submit" value="BUSCAR">
+    
+</form>
+
+<h3> {{ mensaje }}</h3>
+
+
+
+{% endblock %}
